@@ -33,5 +33,18 @@ def inicializar_aplicacao():
     
     subtitulo.pack(pady=20)
     
+    button_frame = tk.Frame(janela, bg="#f4f7fb")
+    button_frame.pack(pady=20)
+    
+    tk.Button(
+        button_frame,
+        text="Gerenciar Clientes",
+        font=("Arial", 14),
+        bg="black",
+        fg="white",
+        width=20,
+        height=2,
+        command=lambda: print("Gerenciar Clientes")
+    ).grid(row=0, column=0, padx=10, pady=10)
     
     janela.mainloop()
