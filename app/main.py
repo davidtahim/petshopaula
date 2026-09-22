@@ -95,5 +95,5 @@ def inicializar_aplicacao():
             entry.grid(row=idx, column=1, pady=5)
             janela.clientes_entries[label] = entry
        form.columnconfigure(1, weight=1)      
-    
+    //colocar a função de construção da página de clientes no objeto janela
     janela.mainloop()
