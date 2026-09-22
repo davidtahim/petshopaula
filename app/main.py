@@ -58,6 +58,17 @@ def inicializar_aplicacao():
         command=lambda: print("Gerenciar Pets")
     ).grid(row=0, column=1, padx=10, pady=10)
     
+    tk.Button(
+        button_frame,
+        text="Sair",
+        font=("Arial", 14),
+        bg="black",
+        fg="white",
+        width=20,
+        height=2,
+        command=janela.quit
+    ).grid(row=1, column=0, columnspan=2, sticky="nsew", padx=10, pady=10)
+    
     
     
     janela.mainloop()
