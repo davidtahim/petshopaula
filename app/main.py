@@ -69,6 +69,31 @@ def inicializar_aplicacao():
         command=janela.quit
     ).grid(row=1, column=0, columnspan=2, sticky="nsew", padx=10, pady=10)
     
+    janela.clientes_page = tk.Frame(janela, bg="#f4f7fb", padx=10, pady=10)
+    janela._build_clientes_page()
     
+    def _build_clientes_page(janela):
+        titulo = tk.Label(
+            janela.clientes_page,
+            text="Página de Gerenciamento de Clientes",
+            font=("Arial", 20, "bold"),
+            bg="#f4f7fb",
+            fg="#1F2937"
+        )
+        
+        titulo.pack(anchor="w", pady=20)
+        
+        form = tk.Frame(janela.clientes_page, bg="#f4f7fb")
+        form.pack(anchor="w", pady=10)
+        
+        janela.clientes_entries = {}
+        labels = ["ID","Nome", "Telefone", "Email"]
+        
+        for idx, label in enumerate(labels):
+            tk.Label(form, text=label, font=("Arial", 14), bg="#f4f7fb", fg="#1F2937").grid(row=idx, column=0, sticky="w", pady=5)
+            entry = tk.Entry(form, font=("Arial", 14), width=30)
+            entry.grid(row=idx, column=1, pady=5)
+            janela.clientes_entries[label] = entry
+       form.columnconfigure(1, weight=1)      
     
     janela.mainloop()
