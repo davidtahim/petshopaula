@@ -47,4 +47,17 @@ def inicializar_aplicacao():
         command=lambda: print("Gerenciar Clientes")
     ).grid(row=0, column=0, padx=10, pady=10)
     
+    tk.Button(
+        button_frame,
+        text="Gerenciar Pets",
+        font=("Arial", 14),
+        bg="black",
+        fg="white",
+        width=20,
+        height=2,
+        command=lambda: print("Gerenciar Pets")
+    ).grid(row=0, column=1, padx=10, pady=10)
+    
+    
+    
     janela.mainloop()
