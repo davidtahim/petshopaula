@@ -48,6 +48,14 @@ def inicializar_aplicacao():
     def show_produtos():
         janela.produtos_page.place(relx=0, rely=0, relwidth=1, relheight=1)
         janela.produtos_page.tkraise() 
+        
+    def show_home():
+        janela.clientes_page.place_forget()
+        janela.animais_page.place_forget()
+        janela.produtos_page.place_forget()
+        titulo.pack(pady=40)
+        subtitulo.pack(pady=20)
+        button_frame.pack(pady=20)
 
     tk.Button(
         button_frame,
