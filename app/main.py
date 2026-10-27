@@ -59,6 +59,18 @@ def inicializar_aplicacao():
     ).grid(row=0, column=1, padx=10, pady=10)
     
     tk.Button(
+            button_frame,
+            text="Gerenciar Produtos",
+            font=("Arial", 14),
+            bg="black",
+            fg="white",
+            width=20,
+            height=2,
+            command=lambda: print("Gerenciar Produtos")
+        ).grid(row=0, column=2, padx=10, pady=10)
+    
+    
+    tk.Button(
         button_frame,
         text="Sair",
         font=("Arial", 14),
@@ -67,12 +79,13 @@ def inicializar_aplicacao():
         width=20,
         height=2,
         command=janela.quit
-    ).grid(row=1, column=0, columnspan=2, sticky="nsew", padx=10, pady=10)
+    ).grid(row=1, column=0, columnspan=3, sticky="nsew", padx=10, pady=10)
     
     janela.clientes_page = tk.Frame(janela, bg="#f4f7fb", padx=10, pady=10)
-    janela._build_clientes_page()
-    
-    def _build_clientes_page(janela):
+    janela.animais_page = tk.Frame(janela, bg="#f4f7fb", padx=10, pady=10)
+    janela.produtos_page = tk.Frame(janela, bg="#f4f7fb", padx=10, pady=10)
+
+    def _build_clientes_page():
         titulo = tk.Label(
             janela.clientes_page,
             text="Página de Gerenciamento de Clientes",
@@ -80,20 +93,101 @@ def inicializar_aplicacao():
             bg="#f4f7fb",
             fg="#1F2937"
         )
-        
+
         titulo.pack(anchor="w", pady=20)
-        
+
         form = tk.Frame(janela.clientes_page, bg="#f4f7fb")
         form.pack(anchor="w", pady=10)
-        
+
         janela.clientes_entries = {}
-        labels = ["ID","Nome", "Telefone", "Email"]
-        
+        labels = ["ID", "Nome", "Telefone", "Email"]
+
         for idx, label in enumerate(labels):
-            tk.Label(form, text=label, font=("Arial", 14), bg="#f4f7fb", fg="#1F2937").grid(row=idx, column=0, sticky="w", pady=5)
+            tk.Label(
+                form,
+                text=label,
+                font=("Arial", 14),
+                bg="#f4f7fb",
+                fg="#1F2937"
+            ).grid(row=idx, column=0, sticky="w", pady=5)
+
             entry = tk.Entry(form, font=("Arial", 14), width=30)
             entry.grid(row=idx, column=1, pady=5)
             janela.clientes_entries[label] = entry
-       form.columnconfigure(1, weight=1)      
-    //colocar a função de construção da página de clientes no objeto janela
+
+        form.columnconfigure(1, weight=1)
+
+    janela._build_clientes_page = _build_clientes_page
+    janela._build_clientes_page()
+
+    def _build_animais_page():
+        titulo = tk.Label(
+            janela.animais_page,
+            text="Página de Gerenciamento de Animais",
+            font=("Arial", 20, "bold"),
+            bg="#f4f7fb",
+            fg="#1F2937"
+        )
+
+        titulo.pack(anchor="w", pady=20)
+
+        form = tk.Frame(janela.animais_page, bg="#f4f7fb")
+        form.pack(anchor="w", pady=10)
+
+        janela.animais_entries = {}
+        labels = ["ID", "Nome", "Espécie", "Raça"]
+
+        for idx, label in enumerate(labels):
+            tk.Label(
+                form,
+                text=label,
+                font=("Arial", 14),
+                bg="#f4f7fb",
+                fg="#1F2937"
+            ).grid(row=idx, column=0, sticky="w", pady=5)
+
+            entry = tk.Entry(form, font=("Arial", 14), width=30)
+            entry.grid(row=idx, column=1, pady=5)
+            janela.animais_entries[label] = entry
+
+        form.columnconfigure(1, weight=1)
+
+    janela._build_animais_page = _build_animais_page
+    janela._build_animais_page()
+
+    def _build_produtos_page():
+        titulo = tk.Label(
+            janela.produtos_page,
+            text="Página de Gerenciamento de Produtos",
+            font=("Arial", 20, "bold"),
+            bg="#f4f7fb",
+            fg="#1F2937"
+        )
+
+        titulo.pack(anchor="w", pady=20)
+
+        form = tk.Frame(janela.produtos_page, bg="#f4f7fb")
+        form.pack(anchor="w", pady=10)
+
+        janela.produtos_entries = {}
+        labels = ["ID", "Nome", "Descrição", "Preço"]
+
+        for idx, label in enumerate(labels):
+            tk.Label(
+                form,
+                text=label,
+                font=("Arial", 14),
+                bg="#f4f7fb",
+                fg="#1F2937"
+            ).grid(row=idx, column=0, sticky="w", pady=5)
+
+            entry = tk.Entry(form, font=("Arial", 14), width=30)
+            entry.grid(row=idx, column=1, pady=5)
+            janela.produtos_entries[label] = entry
+
+        form.columnconfigure(1, weight=1)
+
+    janela._build_produtos_page = _build_produtos_page
+    janela._build_produtos_page()
+
     janela.mainloop()
