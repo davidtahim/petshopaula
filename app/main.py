@@ -135,9 +135,21 @@ def inicializar_aplicacao():
             entry = tk.Entry(form, font=("Arial", 14), width=30)
             entry.grid(row=idx, column=1, pady=5)
             janela.clientes_entries[label] = entry
-
+           
         form.columnconfigure(1, weight=1)
-
+        # Adicionar botão "Voltar" para retornar à página inicial tem que criar um espaço reservado para o botão "Voltar" na página de clientes. Isso pode ser feito criando um frame separado para o botão e posicionando-o abaixo do formulário de entrada. Aqui está como você pode fazer isso:
+        janela.clientes_frame = tk.Frame(janela.clientes_page, bg="#f4f7fb")
+        tk.Button(
+            form,
+            text="Voltar",
+            font=("Arial", 14),
+            bg="gray",
+            fg="white",
+            width=10,
+            height=1,
+            command=show_home
+        ).grid(row=idx, column=2, padx=5, pady=5)
+    # listar os clientes
     janela._build_clientes_page = _build_clientes_page
     janela._build_clientes_page()
 
