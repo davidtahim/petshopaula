@@ -35,7 +35,20 @@ def inicializar_aplicacao():
     
     button_frame = tk.Frame(janela, bg="#f4f7fb")
     button_frame.pack(pady=20)
+
+    def show_clientes():
+        janela.clientes_page.place(relx=0, rely=0, relwidth=1, relheight=1)
+        janela.clientes_page.tkraise()
     
+
+    def show_animais():
+        janela.animais_page.place(relx=0, rely=0, relwidth=1, relheight=1)
+        janela.animais_page.tkraise() 
+
+    def show_produtos():
+        janela.produtos_page.place(relx=0, rely=0, relwidth=1, relheight=1)
+        janela.produtos_page.tkraise() 
+
     tk.Button(
         button_frame,
         text="Gerenciar Clientes",
@@ -44,7 +57,7 @@ def inicializar_aplicacao():
         fg="white",
         width=20,
         height=2,
-        command=lambda: print("Gerenciar Clientes")
+        command=show_clientes,
     ).grid(row=0, column=0, padx=10, pady=10)
     
     tk.Button(
@@ -55,7 +68,7 @@ def inicializar_aplicacao():
         fg="white",
         width=20,
         height=2,
-        command=lambda: print("Gerenciar Pets")
+        command=show_animais,
     ).grid(row=0, column=1, padx=10, pady=10)
     
     tk.Button(
@@ -66,7 +79,7 @@ def inicializar_aplicacao():
             fg="white",
             width=20,
             height=2,
-            command=lambda: print("Gerenciar Produtos")
+            command=show_produtos,
         ).grid(row=0, column=2, padx=10, pady=10)
     
     
@@ -189,5 +202,6 @@ def inicializar_aplicacao():
 
     janela._build_produtos_page = _build_produtos_page
     janela._build_produtos_page()
+
 
     janela.mainloop()
